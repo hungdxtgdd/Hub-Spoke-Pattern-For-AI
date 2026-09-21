@@ -1,35 +1,56 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # Hub & Spoke Pattern For AI - Automated Installer
+# GitHub: https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI
 # Usage:
-#   ./install.sh                      # Installs into the current directory
-#   ./install.sh /path/to/target-dir  # Installs into a specific directory
-#   ./install.sh --global             # Installs into user's global AI config paths
+#   curl -sSL https://raw.githubusercontent.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI/main/install.sh | bash
+#   ./install.sh                      # Installs into current directory
+#   ./install.sh /path/to/project     # Installs into target project directory
+#   ./install.sh --global             # Installs globally for Cursor, Antigravity & Claude
 # ==============================================================================
 
 set -e
 
-SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_URL="https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI.git"
+CLEANUP_TEMP=false
+SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || echo "")"
+
+# Check if script is run locally inside cloned repo or via curl/remote
+if [ -z "$SOURCE_DIR" ] || [ ! -d "$SOURCE_DIR/.rules-hub" ]; then
+    TEMP_DIR=$(mktemp -d)
+    CLEANUP_TEMP=true
+    echo "⬇️  Downloading Hub & Spoke Pattern For AI from GitHub..."
+    git clone --depth 1 "$REPO_URL" "$TEMP_DIR" >/dev/null 2>&1
+    SOURCE_DIR="$TEMP_DIR"
+fi
+
+cleanup() {
+    if [ "$CLEANUP_TEMP" = true ] && [ -n "$TEMP_DIR" ] && [ -d "$TEMP_DIR" ]; then
+        rm -rf "$TEMP_DIR"
+    fi
+}
+trap cleanup EXIT
+
 TARGET_DIR="${1:-.}"
 
 echo "🌟 [Hub & Spoke Pattern For AI] Initializing Installation..."
 
 if [ "$1" == "--global" ]; then
-    echo "🌍 Installing rules globally for your machine..."
+    echo "🌍 Installing rules globally across your machine..."
     
-    # Antigravity Global Config
+    # 1. Antigravity Global Config
     GLOBAL_AGY="$HOME/.gemini/config/rules"
     mkdir -p "$GLOBAL_AGY"
     cp -Rf "$SOURCE_DIR/.rules-hub/"* "$GLOBAL_AGY/"
     echo "  ✅ Installed to Google Antigravity global rules: $GLOBAL_AGY"
     
-    # Cursor Global Rules
+    # 2. Cursor Global Rules
     GLOBAL_CURSOR="$HOME/.cursor/rules"
     mkdir -p "$GLOBAL_CURSOR"
     cp -Rf "$SOURCE_DIR/.cursor/rules/"* "$GLOBAL_CURSOR/"
     echo "  ✅ Installed to Cursor global rules: $GLOBAL_CURSOR"
 
-    # Claude Code Global Config (if exists or home directory)
+    # 3. Claude Code Global Config
     if [ -d "$HOME/.claude" ]; then
         cp -f "$SOURCE_DIR/CLAUDE.md" "$HOME/.claude/CLAUDE.md" 2>/dev/null || true
         echo "  ✅ Installed to Claude Code: $HOME/.claude/CLAUDE.md"
@@ -44,7 +65,7 @@ fi
 mkdir -p "$TARGET_DIR"
 TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
 
-echo "🎯 Target project directory: $TARGET_DIR"
+echo "🎯 Target project: $TARGET_DIR"
 
 # 1. Copy Hub directory
 echo "  📦 Copying .rules-hub/ (Single Source of Truth)..."
@@ -79,7 +100,7 @@ echo ""
 echo "=================================================================="
 echo "🎉 Hub & Spoke AI Rules successfully installed to: $TARGET_DIR"
 echo "=================================================================="
-echo "✨ Supported AI Tools:"
+echo "✨ All AI tools in this project are now powered by Hub & Spoke:"
 echo "   • Cursor IDE              (.cursor/rules/*.mdc)"
 echo "   • Google Antigravity (AGY)(.agents/rules/*.md + AGENTS.md)"
 echo "   • Anthropic Claude Code   (CLAUDE.md)"
