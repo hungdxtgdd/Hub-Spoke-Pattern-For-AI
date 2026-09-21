@@ -1,12 +1,12 @@
 # 🌟 Hub & Spoke Pattern For AI
 
 <p align="center">
-  <strong>The Universal AI Engineering Rules & Governance Architecture for Modern Development</strong><br>
-  <em>"Một Nguồn Sự Thật Duy Nhất — Phục Vụ Tự Động & Đồng Bộ Mọi AI Coding Assistant"</em>
+  <strong>Universal AI Engineering Governance & Multi-Agent Architecture</strong><br>
+  <em>Một Nguồn Sự Thật Duy Nhất (Single Source of Truth) — Phục Vụ & Chuẩn Hóa Mọi AI Coding Assistant</em>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Architecture-Hub_%26_Spoke-blue?style=for-the-badge&logo=git" alt="Hub & Spoke Architecture">
+  <a href="https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI"><img src="https://img.shields.io/badge/Architecture-Hub_%26_Spoke-blue?style=for-the-badge&logo=git" alt="Hub & Spoke Architecture"></a>
   <img src="https://img.shields.io/badge/Cursor-Supported-violet?style=for-the-badge" alt="Cursor">
   <img src="https://img.shields.io/badge/Google_Antigravity-Supported-4285F4?style=for-the-badge&logo=google" alt="Google Antigravity">
   <img src="https://img.shields.io/badge/Claude_Code-Supported-D97706?style=for-the-badge&logo=anthropic" alt="Claude Code">
@@ -17,116 +17,245 @@
 
 ---
 
-## 🌐 Mục lục / Table of Contents
-- [🇻🇳 Hướng Dẫn Cài Đặt & Sử Dụng (Tiếng Việt)](#-hướng-dẫn-cài-đặt--sử-dụng-tiếng-việt)
-- [🇺🇸 English Quick Start & Architecture](#-english-guide)
+## 🌐 Chọn Ngôn Ngữ / Language Selection
+- [🇻🇳 Hướng Dẫn Chi Tiết (Tiếng Việt)](#-tiếng-việt---hướng-dẫn-toàn-diện)
+- [🇺🇸 Comprehensive Guide (English)](#-english---comprehensive-guide)
 
 ---
 
-# 🇻🇳 Hướng Dẫn Cài Đặt & Sử Dụng (Tiếng Việt)
+# 🇻🇳 TIẾNG VIỆT - HƯỚNG DẪN TOÀN DIỆN
 
-## ⚡ Cài Đặt Nhanh Vào Dự Án (Chỉ 1 Dòng Lệnh)
+## 📑 Mục Lục
+1. [Nỗi Đau Thực Tế Của Vibe Coder (Pain Points)](#1-nỗi-đau-thực-tế-của-vibe-coder-pain-points)
+2. [Cơ Chế & Sơ Đồ Hoạt Động Hub & Spoke](#2-cơ-chế--sơ-đồ-hoạt-động-hub--spoke)
+3. [Chi Tiết Từng Quy Tắc (Deep Dive Rules)](#3-chi-tiết-từng-quy-tắc-deep-dive-rules)
+4. [Hướng Dẫn Cài Đặt Nhanh (Installation)](#4-hướng-dẫn-cài-đặt-nhanh-installation)
+5. [Quy Trình Sử Dụng & Đồng Bộ (Workflow)](#5-quy-trình-sử-dụng--đồng-bộ-workflow)
+6. [Bảng Ma Trận Tương Thích (Compatibility Matrix)](#6-bảng-ma-trận-tương-thích-compatibility-matrix)
 
-Bạn muốn tích hợp bộ quy tắc này vào dự án của mình? Hãy mở **Terminal** tại thư mục dự án của bạn và chạy **1 lệnh duy nhất**:
+---
 
-### 🎯 Cách 1: Cài đặt trực tiếp vào dự án hiện tại (Khuyên dùng)
+## 1. Nỗi Đau Thực Tế Của Vibe Coder (Pain Points)
+
+Phong trào **Vibe Coding** giúp lập trình viên biến ý tưởng thành sản phẩm với tốc độ ánh sáng. Tuy nhiên, khi dự án lớn dần hoặc khi làm việc nhóm, các Vibe Coder luôn đối mặt với những "cơn ác mộng" sau:
+
+- 🌪️ **Tự Ý Phá Vỡ Tech Stack**: Bạn đang dùng Tailwind & PostgreSQL, nhưng AI đột nhiên cài thêm Chakra UI, Prisma hoặc đổi sang Axios mà không hỏi trước.
+- 🎭 **Mock Data Ảo Tưởng**: AI viết giao diện rất đẹp nhưng toàn gán `const users = [{id: 1, name: 'Fake'}]`. Khi kết nối API thật thì lỗi vỡ giao diện vì không xử lý `Loading`, `Error`, hay `Empty State`.
+- 😴 **Code Lười Biếng (Lazy Completions)**: AI trả về các đoạn code dở dang kèm chú thích `// TODO: implement later` hoặc `// ... keep existing code ...` khiến bạn phải tự viết lại.
+- 💣 **"Lừa" Xanh Test (Fake Tests)**: Khi Unit Test bị fail, thay vì sửa logic code, AI lại đi sửa file Test Assertion để ép test pass giả tạo.
+- 📂 **File Phình To Khổng Lồ**: File vượt quá 500 - 1000 dòng, vi phạm Single Responsibility, khiến context window của AI bị tràn và sinh bug liên tục.
+- 🔀 **Lệch Pha Giữa Các Công Cụ (AI Rule Drift)**: Bạn cấu hình quy tắc cho **Cursor** (`.cursorrules`), nhưng khi sang **Google Antigravity**, **Claude Code**, hay **Windsurf** thì AI quên sạch mọi quy ước.
+
+👉 **Hub & Spoke Pattern For AI ra đời để giải quyết triệt để tất cả các vấn đề trên!**
+
+---
+
+## 2. Cơ Chế & Sơ Đồ Hoạt Động Hub & Spoke
+
+Mô hình mượn ý tưởng từ kiến trúc **Trục Bánh Xe (Hub) & Nan Hoa (Spokes)**:
+
+```text
+                               ┌─────────────────────────────────────────┐
+                               │        .rules-hub/ (THE HUB)            │
+                               │     Nguồn Sự Thật Duy Nhất (SSoT)       │
+                               │ (Core, Git, Frontend, Backend, QA, DB)  │
+                               └────────────────────┬────────────────────┘
+                                                    │
+                   ┌────────────────────────────────┼────────────────────────────────┐
+                   │                                │                                │
+                   ▼                                ▼                                ▼
+        ┌─────────────────────┐          ┌─────────────────────┐          ┌─────────────────────┐
+        │     SPOKE: CURSOR   │          │  SPOKE: ANTIGRAVITY │          │ SPOKE: CLAUDE CODE  │
+        │ .cursor/rules/*.mdc │          │.agents/rules/*.md   │          │      CLAUDE.md      │
+        │ (Globs + Triggers)  │          │     AGENTS.md       │          │ (CLI Instructions)  │
+        └─────────────────────┘          └─────────────────────┘          └─────────────────────┘
+                   ▲                                ▲                                ▲
+                   │                                │                                │
+                   └────────────────────────────────┼────────────────────────────────┘
+                                                    │
+                               ┌────────────────────┴────────────────────┐
+                               │   SPOKE: CODEX / WINDSURF / COPILOT     │
+                               │ CODEX.md / .windsurfrules / .github/... │
+                               └─────────────────────────────────────────┘
+```
+
+### 💡 Nguyên lý hoạt động:
+1. **The Hub (`.rules-hub/`)**: Là **Nguồn sự thật duy nhất**. Toàn bộ tri thức, tiêu chuẩn kỹ thuật và lằn ranh đỏ được viết tại đây dưới định dạng Markdown chuẩn.
+2. **The Spokes (Nan hoa)**: Các adapter tương thích với từng công cụ AI cụ thể:
+   - Cursor đọc thư mục `.cursor/rules/*.mdc` (có frontmatter `globs`).
+   - Google Antigravity IDE đọc `.agents/rules/*.md` và `AGENTS.md`.
+   - Claude Code CLI đọc `CLAUDE.md`.
+   - OpenAI Codex đọc `CODEX.md`.
+   - Codeium Windsurf đọc `.windsurfrules`.
+   - GitHub Copilot đọc `.github/copilot-instructions.md`.
+3. **Cơ chế Đồng bộ 1 chạm (`sync-rules.sh`)**: Khi sửa đổi bất kỳ rule nào tại Hub, script sẽ tự động chuyển hóa và cập nhật đến tất cả các Spokes trong chớp mắt.
+
+---
+
+## 3. Chi Tiết Từng Quy Tắc (Deep Dive Rules)
+
+Bộ governance này gồm 6 module quy chuẩn cốt lõi đặt trong [`.rules-hub/`](file:///.rules-hub):
+
+| Tệp Quy Chuẩn | Vai Trò & Công Dụng Chi Tiết |
+| :--- | :--- |
+| **`00-core-discipline.md`** | **5 Lằn Ranh Đỏ Bất Biến**: Cấm đổi tech stack tùy tiện, cấm mock data trên production, cấm code dở dang `// TODO`, giới hạn file tối đa 250 dòng, cấm sửa test assertion giả tạo. Quy định **Execution Loop 5 bước**: *Spec First $\rightarrow$ Atomic Changes $\rightarrow$ Self-Verification*. |
+| **`git-workflow.md`** | **Kỷ Luật Quản Lý Phiên Bản**: Bắt buộc chạy `git status` trước khi sửa code, quy chuẩn Conventional Commits (`feat:`, `fix:`, `refactor:`), cam kết commit nguyên tử (Atomic Commits), và quy trình Rollback khẩn cấp an toàn. |
+| **`frontend-ui.md`** | **Tiêu Chuẩn UI/UX Đẳng Cấp**: Thiết kế Responsive Mobile-first, cấm màu mặc định vô hồn, typography hiện đại, micro-animations mượt mà, và bắt buộc xử lý đủ **4 trạng thái UI**: `Loading`, `Success`, `Error`, `Empty State`. |
+| **`backend-api.md`** | **Kiến Trúc & Bảo Mật Backend**: Bắt buộc xác thực dữ liệu đầu vào (Zod/Pydantic), chuẩn hóa mã phản hồi HTTP (200, 201, 400, 401, 403, 404, 500), tách lớp nghiêm ngặt (Controller $\rightarrow$ Service $\rightarrow$ Repository), xử lý Database Transaction an toàn. |
+| **`testing-qa.md`** | **Kiểm Thử & Đảm Bảo Chất Lượng**: Chuẩn cấu trúc AAA (Arrange - Act - Assert), cô lập môi trường test độc lập, bảo vệ tính toàn vẹn của bài test (khi test fail là do logic sai, cấm sửa test để qua mặt). |
+| **`database-schema.md`** | **Quy Chuẩn Cơ Sở Dữ Liệu**: Bắt buộc dùng khóa chính UUIDv7 / ULID (tránh lộ Auto-increment ID), luôn có audit timestamps (`created_at`, `updated_at`), quy trình Migration an toàn không gây downtime hệ thống. |
+
+---
+
+## 4. Hướng Dẫn Cài Đặt Nhanh (Installation)
+
+### 🎯 Cách 1: Cài đặt 1 dòng lệnh vào Dự Án Hiện Tại (Khuyên Dùng)
+Mở Terminal tại thư mục dự án bạn đang làm việc và dán lệnh sau:
 ```bash
 curl -sSL https://raw.githubusercontent.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI/main/install.sh | bash
 ```
-> *(Lệnh trên sẽ tự động kéo toàn bộ rules về và cài thẳng vào thư mục dự án của bạn, hỗ trợ ngay lập tức Cursor, Antigravity, Claude Code, Windsurf, Copilot).*
+> *Lệnh trên sẽ tải tự động và cài đặt đầy đủ Hub + toàn bộ cấu hình AI vào dự án của bạn ngay lập tức.*
 
 ---
 
 ### 🌍 Cách 2: Cài đặt Toàn Cục (Global) cho toàn bộ máy tính
-Nếu bạn muốn tất cả các dự án trên máy tính tự động áp dụng quy tắc này:
+Áp dụng bộ quy tắc cho tất cả các dự án trên máy (Antigravity, Cursor, Claude Code):
 ```bash
 curl -sSL https://raw.githubusercontent.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI/main/install.sh | bash -s -- --global
 ```
 
 ---
 
-### 📦 Cách 3: Kéo về và sử dụng như một Starter Kit dự án mới
+### 📦 Cách 3: Kéo về làm Dự Án Mới (Starter Kit)
 ```bash
-# Clone dự án về máy
-git clone https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI.git my-new-project
-
-# Di chuyển vào dự án và bắt đầu code
-cd my-new-project
+git clone https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI.git my-awesome-project
+cd my-awesome-project
 ```
 
 ---
 
-## 🏛️ Cơ Chế Hoạt Động (Hub & Spoke Là Gì?)
+## 5. Quy Trình Sử Dụng & Đồng Bộ (Workflow)
 
 ```text
-                               ┌──────────────────────────────┐
-                               │   .rules-hub/ (THE HUB)      │
-                               │  Nguồn Sự Thật Duy Nhất      │
-                               └──────────────┬───────────────┘
-                                              │
-               ┌──────────────────────────────┼──────────────────────────────┐
-               │                              │                              │
-               ▼                              ▼                              ▼
-        ┌──────────────┐              ┌──────────────┐              ┌──────────────┐
-        │    CURSOR    │              │ ANTIGRAVITY  │              │ CLAUDE CODE  │
-        │.cursor/rules/│              │.agents/rules/│              │  CLAUDE.md   │
-        │   (*.mdc)    │              │  AGENTS.md   │              │              │
-        └──────────────┘              └──────────────┘              └──────────────┘
-               ▲                              ▲                              ▲
-               │                              │                              │
-               └──────────────────────────────┼──────────────────────────────┘
-                                              │
-                               ┌──────────────┴──────────────┐
-                               │  CODEX / WINDSURF / COPILOT │
-                               │  CODEX.md / .windsurfrules  │
-                               │  .github/copilot-...        │
-                               └─────────────────────────────┘
+[1. Chỉnh sửa Rule trong .rules-hub/] ──► [2. Chạy ./sync-rules.sh] ──► [3. Toàn bộ AI nhận Rule mới]
 ```
 
-1. **Thư mục `.rules-hub/` (Trục trung tâm - The Hub)**: Là nơi duy nhất chứa nội dung quy tắc chuẩn của team.
-2. **Các thư mục adapter (Nan hoa - The Spokes)**: Tự động phân phối quy tắc đến từng công cụ AI:
-   - **Cursor**: Đọc `.cursor/rules/*.mdc`
-   - **Google Antigravity**: Đọc `.agents/rules/*.md` và `AGENTS.md`
-   - **Claude Code CLI**: Đọc `CLAUDE.md`
-   - **OpenAI Codex CLI**: Đọc `CODEX.md`
-   - **Codeium Windsurf**: Đọc `.windsurfrules`
-   - **GitHub Copilot**: Đọc `.github/copilot-instructions.md`
-
-### 🔄 Cách sửa đổi & Thêm quy tắc mới:
-1. Bạn chỉ cần sửa hoặc tạo file `.md` trong thư mục **`.rules-hub/`**.
-2. Chạy lệnh:
+1. Mở file cần sửa trong `.rules-hub/` (ví dụ: bổ sung quy định frontend trong `frontend-ui.md`).
+2. Chạy lệnh đồng bộ:
    ```bash
    ./sync-rules.sh
    ```
-3. Toàn bộ các công cụ AI trong dự án sẽ được đồng bộ ngay lập tức!
+3. Mọi công cụ AI của bạn (Cursor, Antigravity, Claude, Windsurf, Copilot) sẽ lập tức áp dụng quy chuẩn mới mà không cần thao tác thêm!
 
 ---
 
-## 🛡️ 5 Lằn Ranh Đỏ Bất Biến (Core Discipline)
+## 6. Bảng Ma Trận Tương Thích (Compatibility Matrix)
 
-1. 🚫 **Tech Stack Immutability**: Tuyệt đối không tự ý thêm, sửa, đổi thư viện nếu chưa có sự đồng ý rõ ràng.
-2. 🚫 **No Mock Data in Production**: Luôn kết nối API thật, Database thật hoặc `.env`. Bắt buộc xử lý 4 trạng thái UI: `Loading`, `Success`, `Error`, `Empty`.
-3. 🚫 **No Lazy Completions**: Cấm viết code cắt gọt `// TODO: implement later` hoặc bỏ lửng hàm.
-4. 📏 **File Length Limit (250 Dòng)**: Tuân thủ Single Responsibility. Tách file thành subcomponents/helpers khi vượt 250 dòng.
-5. 🛡️ **Test Integrity Protection**: Khi test fail, phải sửa code logic. Tuyệt đối không sửa assertion để "lừa" test xanh.
+| Nền Tảng AI | Tệp Cấu Hình Đích | Cơ Chế Nạp Quy Tắc |
+| :--- | :--- | :--- |
+| **Cursor IDE** | `.cursor/rules/*.mdc` | Tự động kích hoạt theo File Globs & Prompt Context |
+| **Google Antigravity (AGY)** | `.agents/rules/*.md` + `AGENTS.md` | Tự động nạp vào Agent Workspace Context |
+| **Claude Code CLI** | `CLAUDE.md` | Chỉ dẫn hệ thống khi khởi chạy CLI |
+| **OpenAI Codex CLI** | `CODEX.md` | Đọc làm System Prompt & Workspace Directives |
+| **Codeium Windsurf** | `.windsurfrules` | Cascade Engine Context Memory |
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Nạp vào Copilot Chat & Code Completion |
 
 ---
 ---
 
-# 🇺🇸 English Guide
+# 🇺🇸 ENGLISH - COMPREHENSIVE GUIDE
 
-## ⚡ Quick Start (1-Line Installation)
+## 📑 Table of Contents
+1. [The Vibe Coder Pain Points](#1-the-vibe-coder-pain-points)
+2. [Hub & Spoke Architecture & Mechanism](#2-hub--spoke-architecture--mechanism)
+3. [Deep Dive: Included Rules & Capabilities](#3-deep-dive-included-rules--capabilities)
+4. [Quick Installation Guide](#4-quick-installation-guide)
+5. [Workflow & Rule Synchronization](#5-workflow--rule-synchronization)
+6. [Compatibility Matrix](#6-compatibility-matrix)
 
-To integrate this governance architecture into any existing project, open your **Terminal** inside your project directory and run:
+---
 
-### 🎯 Option 1: Install into Current Project (Recommended)
+## 1. The Vibe Coder Pain Points
+
+The **Vibe Coding** movement enables developers to ship products at lightning speed. However, as codebases grow, developers inevitably run into severe friction:
+
+- 🌪️ **Tech Stack Hijacking**: AI unexpectedly installs new UI packages, swaps ORMs, or introduces unwanted libraries without consent.
+- 🎭 **Mock Data Hallucinations**: AI designs great UI components using hardcoded arrays `const data = [...]`, completely breaking on production due to missing `Loading`, `Error`, or `Empty` states.
+- 😴 **Lazy Completions**: AI returns code with comments like `// TODO: implement later` or `// ... rest of code unchanged ...`, forcing you to write boilerplate manually.
+- 💣 **Test Assertion Faking**: When unit tests fail, AI changes the test assertions to "cheat" the test suite instead of fixing the root bug.
+- 📂 **Bloated Monolithic Files**: Files exceed 500+ lines, breaking Single Responsibility and overwhelming LLM context windows.
+- 🔀 **AI Rule Drift Across Tools**: Rules configured for Cursor are ignored by Antigravity, Claude Code, or Windsurf.
+
+👉 **Hub & Spoke Pattern For AI eliminates rule drift and enforces production-grade engineering standards across all AI assistants.**
+
+---
+
+## 2. Hub & Spoke Architecture & Mechanism
+
+```text
+                               ┌─────────────────────────────────────────┐
+                               │        .rules-hub/ (THE HUB)            │
+                               │     Single Source of Truth (SSoT)       │
+                               │ (Core, Git, Frontend, Backend, QA, DB)  │
+                               └────────────────────┬────────────────────┘
+                                                    │
+                   ┌────────────────────────────────┼────────────────────────────────┐
+                   │                                │                                │
+                   ▼                                ▼                                ▼
+        ┌─────────────────────┐          ┌─────────────────────┐          ┌─────────────────────┐
+        │     SPOKE: CURSOR   │          │  SPOKE: ANTIGRAVITY │          │ SPOKE: CLAUDE CODE  │
+        │ .cursor/rules/*.mdc │          │.agents/rules/*.md   │          │      CLAUDE.md      │
+        │ (Globs + Triggers)  │          │     AGENTS.md       │          │ (CLI Instructions)  │
+        └─────────────────────┘          └─────────────────────┘          └─────────────────────┘
+                   ▲                                ▲                                ▲
+                   │                                │                                │
+                   └────────────────────────────────┼────────────────────────────────┘
+                                                    │
+                               ┌────────────────────┴────────────────────┐
+                               │   SPOKE: CODEX / WINDSURF / COPILOT     │
+                               │ CODEX.md / .windsurfrules / .github/... │
+                               └─────────────────────────────────────────┘
+```
+
+1. **The Hub (`.rules-hub/`)**: Houses raw, uncompromised engineering guidelines in standard Markdown.
+2. **The Spokes**: Format-specific adapters tailored to each AI harness:
+   - **Cursor**: `.cursor/rules/*.mdc` (includes frontmatter globs).
+   - **Google Antigravity**: `.agents/rules/*.md` and `AGENTS.md`.
+   - **Claude Code CLI**: `CLAUDE.md`.
+   - **OpenAI Codex**: `CODEX.md`.
+   - **Codeium Windsurf**: `.windsurfrules`.
+   - **GitHub Copilot**: `.github/copilot-instructions.md`.
+3. **One-Touch Synchronizer (`sync-rules.sh`)**: Propagates Hub updates to all Spokes in seconds.
+
+---
+
+## 3. Deep Dive: Included Rules & Capabilities
+
+All governance rules live in [`.rules-hub/`](file:///.rules-hub):
+
+| Rule File | Purpose & Impact |
+| :--- | :--- |
+| **`00-core-discipline.md`** | **5 Non-Negotiable Red Lines**: Tech stack immutability, zero mock data on production, zero lazy completions, strict 250-line file limit, test integrity protection. Enforces the **5-step Execution Loop**: *Spec First $\rightarrow$ Atomic Changes $\rightarrow$ Self-Verification*. |
+| **`git-workflow.md`** | **Git & Version Control Discipline**: Mandatory pre-flight `git status` check, Conventional Commits standard (`feat:`, `fix:`, `refactor:`), atomic commits, and safe emergency rollback procedures. |
+| **`frontend-ui.md`** | **Frontend & UI/UX Standards**: Mobile-first responsive design, modern curated color palettes, micro-animations, and mandatory 4-state handling (`Loading`, `Success`, `Error`, `Empty`). |
+| **`backend-api.md`** | **Backend Architecture & Security**: Strict schema validation (Zod/Pydantic), standardized HTTP status codes, layered architecture (Controller $\rightarrow$ Service $\rightarrow$ Repository), safe DB transactions. |
+| **`testing-qa.md`** | **Testing & QA Integrity**: AAA pattern (Arrange-Act-Assert), isolated test environments, absolute prohibition against modifying assertions to fake passing tests. |
+| **`database-schema.md`** | **Database Governance**: Primary keys using UUIDv7 / ULID, mandatory audit timestamps (`created_at`, `updated_at`), zero-downtime migration standards. |
+
+---
+
+## 4. Quick Installation Guide
+
+### 🎯 Option 1: 1-Line Install into Current Project (Recommended)
+Open Terminal inside your project directory and run:
 ```bash
 curl -sSL https://raw.githubusercontent.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI/main/install.sh | bash
 ```
 
 ---
 
-### 🌍 Option 2: Install Globally for Your Entire Machine
+### 🌍 Option 2: Global Installation for Entire Machine
+Apply rules globally across all repositories on your system:
 ```bash
 curl -sSL https://raw.githubusercontent.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI/main/install.sh | bash -s -- --global
 ```
@@ -135,52 +264,42 @@ curl -sSL https://raw.githubusercontent.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI/
 
 ### 📦 Option 3: Clone as a New Project Starter Kit
 ```bash
-git clone https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI.git my-new-project
-cd my-new-project
+git clone https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI.git my-awesome-project
+cd my-awesome-project
 ```
 
 ---
 
-## 📂 Directory Structure Breakdown
+## 5. Workflow & Rule Synchronization
 
 ```text
-├── .rules-hub/                         <-- [THE HUB] Single Source of Truth
-│   ├── 00-core-discipline.md           <-- 5 Non-Negotiable Red Lines & Core Discipline
-│   ├── git-workflow.md                 <-- Git Safety, Conventional Commits, Atomic Commits
-│   ├── frontend-ui.md                  <-- UI/UX Standards & 4 Mandatory UI States
-│   ├── backend-api.md                  <-- Strict Validation (Zod/Pydantic) & HTTP Status
-│   ├── testing-qa.md                   <-- AAA Pattern & Test Integrity Protection
-│   └── database-schema.md              <-- UUIDv7, Timestamps, Safe Migrations
-│
-├── .cursor/rules/*.mdc                 <-- [SPOKE] Cursor AI adapter (globs & triggers)
-├── .agents/rules/*.md                  <-- [SPOKE] Google Antigravity adapter
-├── .github/copilot-instructions.md     <-- [SPOKE] GitHub Copilot adapter
-├── AGENTS.md                           <-- Antigravity Root Rule
-├── CLAUDE.md                           <-- Anthropic Claude Code CLI Root Rule
-├── CODEX.md                            <-- OpenAI Codex Root Rule
-├── .windsurfrules                      <-- Codeium Windsurf Root Rule
-├── install.sh                          <-- Automated 1-Line Installer
-├── sync-rules.sh                       <-- Automated Hub-to-Spokes Synchronizer
-└── README.md                           <-- Universal Manual
+[1. Modify Rule in .rules-hub/] ──► [2. Run ./sync-rules.sh] ──► [3. All AI Agents Updated]
 ```
+
+1. Edit or add files in `.rules-hub/`.
+2. Run synchronization:
+   ```bash
+   ./sync-rules.sh
+   ```
+3. All AI harnesses automatically receive the updated rules!
 
 ---
 
-## 📊 Compatibility Matrix
+## 6. Compatibility Matrix
 
-| AI Tool | Target Configuration | Activation Mode |
+| AI Tool | Target Config File | Activation Method |
 | :--- | :--- | :--- |
-| **Cursor IDE** | `.cursor/rules/*.mdc` | Automatic via Globs & AlwaysApply |
-| **Google Antigravity** | `.agents/rules/*.md` + `AGENTS.md` | Workspace Context & System Rules |
+| **Cursor IDE** | `.cursor/rules/*.mdc` | Automatic via Globs & Rules Selector |
+| **Google Antigravity (AGY)** | `.agents/rules/*.md` + `AGENTS.md` | Workspace Context & System Rules |
 | **Claude Code CLI** | `CLAUDE.md` | CLI System Instructions |
 | **OpenAI Codex CLI** | `CODEX.md` | System Prompt / Workspace Rules |
-| **Codeium Windsurf** | `.windsurfrules` | Cascade Context Memory |
-| **GitHub Copilot** | `.github/copilot-instructions.md` | Chat & Completion Directives |
+| **Codeium Windsurf** | `.windsurfrules` | Cascade Engine Context Memory |
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Chat & Code Completion Directives |
 
 ---
 
 ## 🤝 Contributing & License
 
-Contributions, feedback, and new AI spokes are warmly welcomed! Feel free to open an Issue or Pull Request on [GitHub](https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI).
+Contributions, new AI spokes, and feedback are warmly welcomed! Feel free to submit an Issue or Pull Request on [GitHub](https://github.com/hungdxtgdd/Hub-Spoke-Pattern-For-AI).
 
-Distributed under the MIT License.
+Distributed under the **MIT License**.
