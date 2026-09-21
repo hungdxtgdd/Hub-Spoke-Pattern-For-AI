@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/Google_Antigravity-Supported-4285F4?style=for-the-badge&logo=google" alt="Google Antigravity">
   <img src="https://img.shields.io/badge/Claude_Code-Supported-D97706?style=for-the-badge&logo=anthropic" alt="Claude Code">
   <img src="https://img.shields.io/badge/OpenAI_Codex-Supported-10A37F?style=for-the-badge&logo=openai" alt="OpenAI Codex">
-  <img src="https://img.shields.io/badge/Windsurf-Supported-06B6D4?style=for-the-badge" alt="Windsurf">
+  <img src="https://img.shields.io/badge/Windsurf-Supported-06B6D4?style=for-the-badge&logo=windsurf" alt="Windsurf">
   <img src="https://img.shields.io/badge/GitHub_Copilot-Supported-000000?style=for-the-badge&logo=github" alt="GitHub Copilot">
 </p>
 
@@ -32,6 +32,7 @@
 4. [Hướng Dẫn Cài Đặt Nhanh (Installation)](#4-hướng-dẫn-cài-đặt-nhanh-installation)
 5. [Quy Trình Sử Dụng & Đồng Bộ (Workflow)](#5-quy-trình-sử-dụng--đồng-bộ-workflow)
 6. [Bảng Ma Trận Tương Thích (Compatibility Matrix)](#6-bảng-ma-trận-tương-thích-compatibility-matrix)
+7. [Trải Nghiệm Thực Tế Khi Code (Day-to-Day AI Assistance)](#7-trải-nghiệm-thực-tế-khi-code-day-to-day-ai-assistance)
 
 ---
 
@@ -161,6 +162,18 @@ cd my-awesome-project
 | **GitHub Copilot** | `.github/copilot-instructions.md` | Nạp vào Copilot Chat & Code Completion |
 
 ---
+
+## 7. Trải Nghiệm Thực Tế Khi Code (Day-to-Day AI Assistance)
+
+Sau khi cài đặt **Hub & Spoke Pattern For AI**, bạn **không cần phải gõ lại prompt dài dòng mỗi lần chat**. Hệ thống quy tắc thông minh sẽ tự động hỗ trợ bạn theo từng ngữ cảnh lập trình thực tế:
+
+* 🛡️ **Khi bạn code bình thường**: AI luôn nhớ kỷ luật cốt lõi (`00-core-discipline` & `git-workflow`) — tuyệt đối không đổi thư viện bừa bãi, không code lười `// TODO`, giữ file dưới 250 dòng và commit sạch sẽ.
+* 🎨 **Khi bạn mở/sửa file UI (`.tsx`, `.jsx`, `.vue`, `.css`)**: Cursor/Antigravity chỉ nạp thêm `frontend-ui`, hoàn toàn bỏ qua DB/Backend để tiết kiệm token và tập trung tối đa làm giao diện xuất sắc, chuẩn Responsive Mobile-first, bắt buộc xử lý đủ 4 trạng thái (`Loading`, `Success`, `Error`, `Empty State`).
+* ⚡ **Khi bạn làm API & Logic Backend (`routes/`, `controllers/`, `services/`)**: AI tự động kích hoạt `backend-api`, ép kiểm tra kiểu dữ liệu đầu vào nghiêm ngặt (Zod/Pydantic), chuẩn hóa HTTP status code (200, 201, 400, 401, 403, 404, 500) và tách tầng kiến trúc chuẩn.
+* 🗄️ **Khi bạn thiết kế Database & Migrations (`schema.prisma`, `models/`, `migrations/`)**: AI tự động nạp `database-schema`, ép dùng khóa chính UUIDv7 / ULID, trường timestamps bắt buộc, và tạo migration an toàn chống downtime.
+* 🧪 **Khi bạn chạy hoặc viết Test (`*.test.*`, `*.spec.*`)**: AI lập tức kích hoạt `testing-qa`, tuân thủ cấu trúc AAA (Arrange - Act - Assert), và **tuyệt đối không bao giờ "gian lận" sửa test assertion** khi test fail!
+
+---
 ---
 
 # 🇺🇸 ENGLISH - COMPREHENSIVE GUIDE
@@ -172,6 +185,7 @@ cd my-awesome-project
 4. [Quick Installation Guide](#4-quick-installation-guide)
 5. [Workflow & Rule Synchronization](#5-workflow--rule-synchronization)
 6. [Compatibility Matrix](#6-compatibility-matrix)
+7. [Day-to-Day Developer Experience & AI Assistance](#7-day-to-day-developer-experience--ai-assistance)
 
 ---
 
@@ -295,6 +309,18 @@ cd my-awesome-project
 | **OpenAI Codex CLI** | `CODEX.md` | System Prompt / Workspace Rules |
 | **Codeium Windsurf** | `.windsurfrules` | Cascade Engine Context Memory |
 | **GitHub Copilot** | `.github/copilot-instructions.md` | Chat & Code Completion Directives |
+
+---
+
+## 7. Day-to-Day Developer Experience & AI Assistance
+
+Once installed, you **never need to repeat complex system prompts in every chat session**. The context-aware rule system automatically supports you based on real-time developer actions:
+
+* 🛡️ **During General Coding**: AI constantly remembers core discipline (`00-core-discipline` & `git-workflow`) — zero arbitrary tech changes, zero lazy `// TODO` shortcuts, keeping files under 250 lines, and making clean atomic commits.
+* 🎨 **When Opening/Editing UI Files (`.tsx`, `.jsx`, `.vue`, `.css`)**: Cursor/Antigravity selectively loads `frontend-ui`, ignoring backend/DB to save token context and focus purely on creating top-tier UI with mandatory 4-state handling (`Loading`, `Success`, `Error`, `Empty`).
+* ⚡ **When Building Backend & APIs (`routes/`, `controllers/`, `services/`)**: AI automatically triggers `backend-api`, enforcing strict schema validation (Zod/Pydantic), standard HTTP response codes, and clean layered architecture.
+* 🗄️ **When Designing Database & Migrations (`schema.prisma`, `models/`, `migrations/`)**: AI activates `database-schema`, enforcing UUIDv7/ULID primary keys, audit timestamps, and zero-downtime migrations.
+* 🧪 **When Writing or Running Tests (`*.test.*`, `*.spec.*`)**: AI immediately activates `testing-qa`, enforcing the AAA pattern, and **strictly forbids altering test assertions to fake passing tests**!
 
 ---
 
