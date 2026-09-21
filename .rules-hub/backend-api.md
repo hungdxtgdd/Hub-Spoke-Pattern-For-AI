@@ -1,0 +1,79 @@
+# ⚙️ BACKEND-API: QUY CHUẨN BACKEND & DỊCH VỤ AN TOÀN
+
+---
+
+## 1. NGUYÊN TẮC VALIDATION & CONTRACT-FIRST
+* **Bắt buộc validate đầu vào**: Dùng Pydantic (Python), Zod/Joi (TypeScript), hoặc struct tags (Go) cho toàn bộ request body, query params và path parameters.
+* **Không tin tưởng input**: Tuyệt đối không query dữ liệu trực tiếp từ user input mà chưa qua sanitize/validate.
+* **Cấm Raw SQL**: Bắt buộc sử dụng ORM (SQLAlchemy, Prisma, GORM) hoặc Query Builder có parameterized query để chống SQL Injection 100%.
+
+---
+
+## 2. QUY CHUẨN XỬ LÝ LỖI & MÃ HTTP (ERROR HANDLING)
+* Luôn sử dụng mã HTTP Status Code chuẩn:
+  - `200 OK`: Thành công (GET/PUT)
+  - `201 Created`: Tạo mới thành công (POST)
+  - `400 Bad Request`: Sai format dữ liệu đầu vào
+  - `401 Unauthorized`: Chưa đăng nhập / token hết hạn
+  - `403 Forbidden`: Đã đăng nhập nhưng không có quyền truy cập
+  - `404 Not Found`: Không tìm thấy tài nguyên
+  - `422 Unprocessable Entity`: Dữ liệu vi phạm business logic
+  - `500 Internal Server Error`: Lỗi hệ thống máy chủ (luôn log chi tiết vào backend logger, không leak stacktrace ra client).
+
+* Format phản hồi lỗi JSON đồng nhất:
+```json
+{
+  "success": false,
+  "error": {
+    "code": "RESOURCE_NOT_FOUND",
+    "message": "Không tìm thấy người dùng với ID đã cung cấp",
+    "details": null
+  }
+}
+```
+
+---
+
+## 3. PHÂN TRANG & HIỆU NĂNG (PAGINATION & PERFORMANCE)
+* Mọi API lấy danh sách **bắt buộc phải có phân trang** (Limit/Offset hoặc Cursor-based).
+* Giới hạn `limit` mặc định (VD: `default=20`, `max=100`) để tránh sập server khi database lớn.
+* Các thao tác ghi đồng thời nhiều bảng phải được bọc trong **Database Transaction** (Commit khi thành công, Rollback khi có bất kỳ exception nào).
+
+---
+
+## 4. CODE MẪU CHUẨN (PYTHON / FASTAPI EXAMPLE)
+```python
+from fastapi import APIRouter, HTTPException, Depends, status, Query
+from pydantic import BaseModel, Field
+from typing import List, Optional
+import logging
+
+logger = logging.getLogger(__name__)
+router = APIRouter(prefix="/items", tags=["Items"])
+
+class ItemCreateRequest(BaseModel):
+    name: str = Field(..., min_length=1, max_length=100, description="Tên sản phẩm")
+    price: float = Field(..., gt=0, description="Giá phải lớn hơn 0")
+
+class ItemResponse(BaseModel):
+    id: str
+    name: str
+    price: float
+
+@router.post("", response_model=ItemResponse, status_code=status.HTTP_201_CREATED)
+async def create_item(payload: ItemCreateRequest):
+    try:
+        item = await item_service.create(payload.model_dump())
+        return item
+    except DuplicateItemException as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail={"code": "DUPLICATE_ITEM", "message": str(e)}
+        )
+    except Exception as e:
+        logger.error(f"Lỗi không xác định khi tạo item: {str(e)}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail={"code": "INTERNAL_SERVER_ERROR", "message": "Lỗi hệ thống máy chủ"}
+        )
+```

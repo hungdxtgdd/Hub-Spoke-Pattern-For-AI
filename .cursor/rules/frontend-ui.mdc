@@ -1,0 +1,93 @@
+---
+description: Quy chuẩn viết giao diện Frontend (React, Vue, Svelte, Tailwind CSS, Next.js)
+globs: ["**/*.tsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.html", "**/*.css", "**/*.scss", "src/components/**/*", "src/pages/**/*", "src/app/**/*"]
+alwaysApply: false
+---
+
+# 🎨 FRONTEND-UI: QUY CHUẨN PHÁT TRIỂN GIAO DIỆN CHUYÊN NGHIỆP
+
+---
+
+## 1. THIẾT KẾ & PHONG CÁCH (AESTHETICS & TAILWIND)
+* **Mobile-First & Responsive**: Mọi giao diện phải hiển thị mượt mà trên Mobile (`sm:`), Tablet (`md:`), và Desktop (`lg:`, `xl:`).
+* **Không dùng Inline Styles**: Tuyệt đối không dùng `style={{ ... }}` trừ trường hợp giá trị dynamic bắt buộc tính toán theo pixel/toán học (như drag-drop position, canvas). Toàn bộ styling dùng Tailwind classes hoặc CSS modules.
+* **Màu sắc & Phông chữ**:
+  - Tránh màu mặc định thô sơ (đỏ cờ `#ff0000`, xanh lam `#0000ff`). Sử dụng bảng màu phối tinh tế (Tailwind Slate/Zinc/Indigo/Emerald) hoặc CSS Variables (`var(--primary)`).
+  - Sử dụng hiệu ứng mượt mà: `transition-all duration-200 ease-in-out`, hover effects tinh tế, glassmorphism (`backdrop-blur-md`).
+
+---
+
+## 2. QUẢN LÝ TRẠNG THÁI GIAO DIỆN (UI STATES)
+Mọi component hiển thị dữ liệu từ API bắt buộc phải xử lý đủ **4 trạng thái**:
+1. **Loading State**: Hiển thị Skeleton loader (không dùng mỗi chữ "Loading..." đơn điệu).
+2. **Success / Data State**: Hiển thị dữ liệu chuẩn chỉnh.
+3. **Empty State**: Khi mảng rỗng `data.length === 0`, hiển thị hình minh họa hoặc icon kèm thông điệp hướng dẫn người dùng hành động (Call to Action).
+4. **Error State**: Bắt lỗi và hiển thị thông báo thân thiện kèm nút **Thử lại (Retry)**.
+
+---
+
+## 3. CẤU TRÚC COMPONENT & TỐI ƯU
+* **Single Responsibility**: 1 component chỉ làm 1 việc duy nhất. Tách nhỏ các sub-component khi số dòng vượt quá 150 dòng.
+* **Props Typing**: Luôn định nghĩa `interface` hoặc `type` rõ ràng cho Props, không dùng `any`.
+* **Accessibility (a11y)**:
+  - Mọi nút bấm icon phải có `aria-label`.
+  - Hình ảnh phải có thuộc tính `alt`.
+  - Form input phải có `id` và `label` tương ứng `htmlFor`.
+
+---
+
+## 4. CODE MẪU CHUẨN (GOLD STANDARD)
+```tsx
+import React from 'react';
+import { AlertCircle, RefreshCw, FolderOpen } from 'lucide-react';
+
+interface ItemListProps {
+  items?: Array<{ id: string; name: string }>;
+  isLoading: boolean;
+  error?: string | null;
+  onRetry: () => void;
+}
+
+export const ItemList: React.FC<ItemListProps> = ({ items = [], isLoading, error, onRetry }) => {
+  if (isLoading) {
+    return (
+      <div className="space-y-3 p-4 animate-pulse">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-12 bg-slate-200 dark:bg-slate-800 rounded-lg" />
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 text-center rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200">
+        <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-2" />
+        <p className="text-sm text-red-700 dark:text-red-300 mb-4">{error}</p>
+        <button onClick={onRetry} className="px-4 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 flex items-center gap-2 mx-auto">
+          <RefreshCw className="w-4 h-4" /> Thử lại
+        </button>
+      </div>
+    );
+  }
+
+  if (items.length === 0) {
+    return (
+      <div className="p-8 text-center text-slate-500">
+        <FolderOpen className="w-10 h-10 mx-auto mb-2 text-slate-400" />
+        <p className="text-sm font-medium">Chưa có dữ liệu hiển thị</p>
+      </div>
+    );
+  }
+
+  return (
+    <ul className="divide-y divide-slate-100 dark:divide-slate-800">
+      {items.map((item) => (
+        <li key={item.id} className="p-4 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors">
+          <span className="font-medium text-slate-900 dark:text-slate-100">{item.name}</span>
+        </li>
+      ))}
+    </ul>
+  );
+};
+```
