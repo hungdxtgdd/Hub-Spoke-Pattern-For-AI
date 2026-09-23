@@ -1,7 +1,7 @@
 ---
-description: Quy chuẩn viết Unit Test, Integration Test và nguyên tắc chống gian lận test
-globs: ["**/*test*", "**/*spec*", "**/tests/**/*", "**/__tests__/**/*"]
-alwaysApply: false
+description: Rule for testing-qa
+globs: ["**/*"]
+alwaysApply: true
 ---
 
 # 🧪 TESTING-QA: QUY CHUẨN KIỂM THỬ & BẢO VỆ TÍNH TRUNG THỰC CỦA TEST

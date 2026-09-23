@@ -1,7 +1,7 @@
 ---
-description: Quy chuẩn thiết kế Database, Migration an toàn, Indexing và Transaction
-globs: ["**/migrations/**/*", "**/models/**/*", "**/schema/**/*", "**/*.sql", "**/prisma/**/*", "**/entities/**/*"]
-alwaysApply: false
+description: Rule for database-schema
+globs: ["**/*"]
+alwaysApply: true
 ---
 
 # 🗄️ DATABASE-SCHEMA: QUY CHUẨN CƠ SỞ DỮ LIỆU & MIGRATION AN TOÀN

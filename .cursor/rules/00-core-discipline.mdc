@@ -1,5 +1,5 @@
 ---
-description: Quy chuẩn kỷ luật cốt lõi dành cho Master Vibe Coder (Luôn kích hoạt)
+description: Rule for 00-core-discipline
 globs: ["**/*"]
 alwaysApply: true
 ---

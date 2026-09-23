@@ -1,0 +1,54 @@
+---
+description: Rule for spec-driven-development
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# 📐 SPEC-DRIVEN DEVELOPMENT (SDD) & CONTEXT SYSTEM
+
+Hệ thống quy chuẩn kiến trúc và phát triển phần mềm bằng AI theo phương pháp Spec-Driven Development (2026).
+
+---
+
+## 🎯 NGUYÊN TẮC CỐT LÕI: SPEC FIRST, CODE SECOND
+
+1. **Không code khi chưa có Spec**: 
+   - Lập trình viên thiết kế hệ thống và đặt ra ràng buộc; AI là động cơ thực thi.
+   - Tránh tuyệt đối bẫy "Vibe Coding" không kế hoạch dẫn đến Context Drift và vỡ kiến trúc sau tuần thứ 3.
+
+2. **Hệ thống 6 Tệp Context (`/context/`)**:
+   Mọi dự án chuyên nghiệp đều được neo bối cảnh qua 6 tệp chuẩn:
+   - `context/01-project-overview.md`: Tầm nhìn, mục tiêu đo lường được, Core User Flow, và danh sách **No-Gos (Out-of-Scope)**.
+   - `context/02-architecture.md`: Bản vẽ kỹ thuật, phân vai Tech Stack, ranh giới hệ thống, và **Invariants (Luật bất biến)**.
+   - `context/03-code-standards.md`: TypeScript Strict (Cấm `any`), RSC/Client boundaries, Design Tokens.
+   - `context/04-ai-workflow-rules.md`: Kỷ luật Agent: Chỉ làm 1 unit/spec tại một thời điểm, hỏi khi có mơ hồ.
+   - `context/05-ui-context.md`: Design Tokens (Dark mode palette, typography, radius).
+   - `context/06-progress-tracker.md`: **Bộ nhớ sống** duy nhất cập nhật liên tục: In-Progress, Completed, Architectural Decision Log (ADR).
+
+---
+
+## 🔄 QUY TRÌNH TỰ ĐỘNG KHỞI TẠO & LÊN KẾ HOẠCH CHO DỰ ÁN MỚI
+
+Khi làm việc trên một dự án mới hoặc khi User đưa ra một ý tưởng phần mềm:
+
+### Bước 1: Kiểm tra & Tự động Scaffold `/context/`
+- Nếu repo chưa có thư mục `/context/`, Agent chủ động tạo thư mục `/context/` và `/context/feature-specs/` từ bộ template chuẩn.
+
+### Bước 2: Trao đổi & Phản biện Kiến trúc (AI Planning Dialogue)
+- Đóng vai Principal Systems Architect, đặt 3-5 câu hỏi trọng tâm để làm rõ:
+  1. *Core User Flow & Data Flow chính.*
+  2. *Tech Stack & Thư viện chủ đạo.*
+  3. *Invariants (Luật bất biến về bảo mật, auth, lưu trữ).*
+  4. *Phạm vi Out-of-Scope (No-Gos) của Phase 1.*
+
+### Bước 3: Cập nhật trực tiếp vào Context của Dự án
+- Sau khi chốt với User, Agent tự động điền các quyết định kiến trúc vào 6 file trong `/context/`.
+
+### Bước 4: Bẻ nhỏ thành các Feature Specs (`context/feature-specs/`)
+- Chia dự án thành các Unit độc lập (`01-design-system.md`, `02-auth-and-layout.md`,...).
+- Mỗi Unit có Checklist rõ ràng, file cấm sửa, và không vượt quá 1 session làm việc.
+
+### Bước 5: Vòng lặp Thực thi (Execution Loop)
+```text
+[Đọc Feature Spec] ──> [Đổi Progress: IN-PROGRESS] ──> [Thực thi code] ──> [Verify Checklist] ──> [Đổi Progress: COMPLETED & Ghi ADR]
+```

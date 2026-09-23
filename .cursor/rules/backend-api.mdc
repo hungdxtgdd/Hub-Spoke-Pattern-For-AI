@@ -1,7 +1,7 @@
 ---
-description: Quy chuẩn viết Backend, RESTful API, Service logic và xử lý Database
-globs: ["**/*.py", "**/api/**/*", "**/services/**/*", "**/controllers/**/*", "**/routes/**/*", "**/*.go", "src/server/**/*"]
-alwaysApply: false
+description: Rule for backend-api
+globs: ["**/*"]
+alwaysApply: true
 ---
 
 # ⚙️ BACKEND-API: QUY CHUẨN BACKEND & DỊCH VỤ AN TOÀN

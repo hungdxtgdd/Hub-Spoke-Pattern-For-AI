@@ -1,7 +1,7 @@
 ---
-description: Quy chuẩn viết giao diện Frontend (React, Vue, Svelte, Tailwind CSS, Next.js)
-globs: ["**/*.tsx", "**/*.jsx", "**/*.vue", "**/*.svelte", "**/*.html", "**/*.css", "**/*.scss", "src/components/**/*", "src/pages/**/*", "src/app/**/*"]
-alwaysApply: false
+description: Rule for frontend-ui
+globs: ["**/*"]
+alwaysApply: true
 ---
 
 # 🎨 FRONTEND-UI: QUY CHUẨN PHÁT TRIỂN GIAO DIỆN CHUYÊN NGHIỆP

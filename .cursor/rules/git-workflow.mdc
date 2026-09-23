@@ -1,5 +1,5 @@
 ---
-description: Kỷ luật Git an toàn, quản lý nhánh, commit tự động và phục hồi lỗi
+description: Rule for git-workflow
 globs: ["**/*"]
 alwaysApply: true
 ---
